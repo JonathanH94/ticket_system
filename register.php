@@ -20,7 +20,7 @@ require('session_message.php');
         <input type="password" name="password" id="password">
         <label for="confirm_password">Confirm Password</label>
         <input type="password" name="confirm_password" id="confirm_password">
-        <input type="submit" value="Login">
+        <input type="submit" value="Register">
     </form>
 
 

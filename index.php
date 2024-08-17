@@ -4,13 +4,13 @@ require('session_message.php');
 
 ?>
 
-<div>
+<div class="main-content">
 
     <h2 class="index">My Tickets</h2>
 
     <hr/>
 
-    <p class="p">Welcome to the ticketing system. Here you can view the list of tickets below.</p>
+    <p class="p">Welcome <?= $_SESSION['login'] ?>, to the ticketing system. Here you can view the list of tickets below.</p>
 
     <div>
         <a href="create_view.php" class="create_btn">Create a ticket</a>
@@ -19,3 +19,8 @@ require('session_message.php');
 
 
 </div>
+
+<?php
+require('footer.php');
+
+?>

@@ -7,9 +7,12 @@ require('session_message.php');
 
 
 <div class="login-form-container">
-
     <h2>Login</h2>
-    <form action="" method="post">
+    <?php if(!empty($error_msg)) {
+        echo '<label for="error">'. $error_msg . '</label>';
+
+    } ?>
+    <form action="auth_login.php" method="post">
         <label for="email">Email</label>
         <input type="email" name="email" id="email">
         <label for="password">Password</label>
