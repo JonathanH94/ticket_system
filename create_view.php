@@ -6,7 +6,7 @@ require('session_message.php');
 ?>
 
 
-<div>
+<div class="create-form">
 
     <h2 class="create-h2">Create Ticket</h2>
     <hr/>

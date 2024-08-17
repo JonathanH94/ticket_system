@@ -12,19 +12,19 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
     if(empty($title)) {
-        $_SESSION['error_msg'] = "<label> A title is required </label>";
+        $_SESSION['error_msg'] = "A title is required";
         header('Location: create_view.php');
         exit();
 
     } elseif((empty($email)) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
-        $_SESSION['error_msg'] = "<label> A valid email is required </label>";
+        $_SESSION['error_msg'] = "A valid email is required";
         header('Location: create_view.php');
         exit();
+        //got rid of the 250 character limit as msg is stored as a 'text' datatype
+    } elseif ((empty($msg))) {
 
-    } elseif ((empty($msg)) || strlen($msg)> 250)  {
-
-        $_SESSION['error_msg'] = "<label> Message cannot be empty and must be less than 250 characters </label>";
+        $_SESSION['error_msg'] = "Message cannot be empty";
         header('Location: create_view.php');
         exit();
 

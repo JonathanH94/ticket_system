@@ -15,11 +15,10 @@
         <div>
             <h1>Ticketing System</h1>
             <ul>
-                <li><a href="index.php">My Tickets</a></li>
-                <li><a href="create_view.php">Create a ticket</a></li>
+                <li><a href="login.php">Login</a></li>
+                <li><a href="register.php">Register</a></li>
 
             </ul>
-        
         </div>
     </nav>
 </body>
