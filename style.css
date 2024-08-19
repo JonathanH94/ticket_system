@@ -63,6 +63,7 @@ h2{
 
 hr{
     width: 97%;
+    color: #000000;
 
 }
 
@@ -278,6 +279,59 @@ form label {
 .footbar ul li a {
     text-decoration: none; 
     color: #f8f5f5; 
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin-left: 25px;
+}
+
+.view_ticket h2 {
+    margin-left: 25px;
+
+}
+
+.view_ticket h2 .open {
+    color: #38b673;
+}
+
+.view_ticket h2 .resolved {
+    color: #38b673;
+}
+
+.view_ticket h2 .closed {
+    color: #df1616;
+}
+
+.ticket_details {
+    margin-left: 25px;
+
+}
+
+.post-comment input[type="submit"] {
+    width: 15%;
+    margin-left: 25px;
+    padding: 5px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.post-comment textarea {
+    width: 19%;
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-left: 25px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    height: 175px;
+    resize: vertical;
 }
 
 

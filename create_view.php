@@ -10,13 +10,11 @@ require('session_message.php');
 
         <h2 class="create-h2">Create Ticket</h2>
         <hr/>
-        <?php 
-        if(!empty($error_msg)) {
+        <?php if(!empty($error_msg)) :?>
+        
+            <label for="error"><?= htmlspecialchars($error_msg) ?></label>
 
-            echo '<label for="error">'. $error_msg. '</label>';
-
-        }
-        ?>
+        <?php endif;?>
         <form action="create.php" method="post">
             <label for="title">Title</label>
             <input type="text" name="title" placeholder="Title" id="title" >
