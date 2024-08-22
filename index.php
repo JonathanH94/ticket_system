@@ -14,7 +14,7 @@ require('select_tickets.php');
     <p class="p">Welcome <?= htmlspecialchars($_SESSION['login']) ?>, to the ticketing system. Here you can view the list of tickets below.</p>
 
     <div>
-        <a href="create_view.php" class="create_btn">Create a ticket</a>
+        <a href="create_ticket.php" class="create_btn">Create a ticket</a>
 
     </div><br><br>
 
@@ -38,7 +38,7 @@ require('select_tickets.php');
             <?php foreach($st_results as $st_result) : ?>
         
             <tr>
-                <td> <a href="view_ticket.php?id=<?= $st_result['ticket_id']?>"><?= htmlspecialchars($st_result['ticket_id'])?></a></td>
+                <td> <a href="view_ticket_page.php?id=<?= $st_result['ticket_id']?>"><?= htmlspecialchars($st_result['ticket_id'])?></a></td>
                 <td><?= htmlspecialchars($st_result['title']) ?></td>     
                 <td><?= htmlspecialchars($st_result['msg']) ?></td> 
                 <td><?= htmlspecialchars($st_result['created']) ?></td> 

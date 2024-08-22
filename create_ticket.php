@@ -15,7 +15,7 @@ require('session_message.php');
             <label for="error"><?= htmlspecialchars($error_msg) ?></label>
 
         <?php endif;?>
-        <form action="create.php" method="post">
+        <form action="insert_ticket.php" method="post">
             <label for="title">Title</label>
             <input type="text" name="title" placeholder="Title" id="title" >
             <label for="email">Email</label>

@@ -1,8 +1,10 @@
 <?php
 
+require('header.php');
 require('config.php');
-require('view.php');
 // require('session_message.php');
+require('get_ticket_details.php');
+
 
 
 ?>
@@ -18,12 +20,15 @@ require('view.php');
         <hr>
         
         <div class="ticket_details">
+            <div>
+                <i class="fa-solid fa-ticket fa-3x"></i>
+            </div>
             <p><?=date( 'F dS, G:i',strtotime($vt_result['created']))?></p>
             <p><?=htmlspecialchars($vt_result['msg'])?></p>
         </div>
         <hr>
     <?php endif; ?>
-    <div> 
+    <div class="new-comment"> 
         <?php if(!empty($error_msg)) :?>
         
             <label for="error"><?= htmlspecialchars($error_msg) ?></label>
@@ -32,8 +37,24 @@ require('view.php');
         
     </div>     
 
+    <div class="comment_ticket_details">
+        <div>
+            <i class="fa-regular fa-comment fa-3x"></i>
+        </div>
+
+        <?php foreach($comments as $comment) :?>
+
+            <p><?=date( 'F dS, G:i',strtotime($comment['created']))?></p>
+            <p><?=htmlspecialchars($comment['msg'])?></p>
+
+
+        <?php endforeach; ?>
+
+    </div>
+
     <div class="post-comment">
-        <form action="" method="post">
+        <form action="insert_comment.php" method="post">
+            <input type="hidden" name="ticket_id" value="<?= htmlspecialchars($ticket_id) ?>">
             <textarea name="msg" placeholder="Please enter your comment here..." id="msg"></textarea><br>
             <input type="submit" value="Post Comment">
         </form>

@@ -13,19 +13,19 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
     if(empty($title)) {
         $_SESSION['error_msg'] = "A title is required";
-        header('Location: create_view.php');
+        header('Location: create_ticket.php');
         exit();
 
     } elseif((empty($email)) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
         $_SESSION['error_msg'] = "A valid email is required";
-        header('Location: create_view.php');
+        header('Location: create_ticket.php');
         exit();
         //got rid of the 250 character limit as msg is stored as a 'text' datatype
     } elseif ((empty($msg))) {
 
         $_SESSION['error_msg'] = "Message cannot be empty";
-        header('Location: create_view.php');
+        header('Location: create_ticket.php');
         exit();
 
     } else {
@@ -37,11 +37,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
             $insert->bindParam(':email', $email);
             $insert->execute();
 
-            echo "Thank you for submitting a ticket.";
+            // echo "Thank you for submitting a ticket.";
+            header('Location: view_ticket_page.php?id=' . $conn->lastInsertId());
 
         } catch(PDOException $e) {
             die("Insert into database failed".$e->getMessage());
-            header('Location: create_view.php');
+            header('Location: create_ticket.php');
 
         }
 
