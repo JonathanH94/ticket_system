@@ -394,10 +394,44 @@ table, th, td {
 
 }
 
-.ticket_select {
-    margin-left: 25px;
+
+
+.ticket_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    margin-left: 25px; 
+}
+
+
+.ticket_select select{
+    width: 100%;
+    font-size: medium;
+    height: 25px;
 
 }
+
+
+.ticket_search {
+   
+    width: 30%; 
+    margin-left: auto; 
+    margin-right: 25px;
+    right: 0;
+}
+
+
+.ticket_search input[type="search"] {
+    height: 30px; 
+    width: 100%;
+    padding-left: 10px;
+    
+}
+
+
+
+
+
 
 .ticket-list {
     display: flex;
@@ -446,6 +480,11 @@ table, th, td {
 
 .ticket-list .ticket:hover {
     background-color: #fcfcfc;
+}
+
+.ticket-list h3 {
+    text-align: center;
+
 }
 
 

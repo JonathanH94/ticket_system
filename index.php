@@ -5,6 +5,7 @@ require('session_message.php');
 
 if (!isset($_SESSION['st_results'])) {
    
+    
     header('Location: select_tickets.php');
     exit();
 }
@@ -31,22 +32,32 @@ if (!isset($_SESSION['st_results'])) {
             <label for="error"><?= htmlspecialchars($error_msg) ?></label>
 
         <?php endif;?>
-        <div class="ticket_select">
-            <form action="select_tickets.php" method="post" id="ticket_form">
-                <select name="ticket_type" id="ticket_type"  onchange="document.getElementById('ticket_form').submit();">
-                    <option value=""></option>
-                    <option value="open">Open Tickets</option>
-                    <option value="resolved">Resolved Tickets</option>
-                    <option value="closed">Closed Tickets</option>
-                </select> 
-
-            </form>
+        <div class="ticket_container">
+            <div class="ticket_select">
+                <form action="select_tickets.php" method="post" id="ticket_form">
+                    <select name="ticket_type" id="ticket_type" onchange="document.getElementById('ticket_form').submit();">
+                        <option value=""></option>
+                        <option value="open">Open Tickets</option>
+                        <option value="resolved">Resolved Tickets</option>
+                        <option value="closed">Closed Tickets</option>
+                    </select> 
+                    
+             </form>
+            </div>
+            <!-- <div class="ticket_search">
+                <form action="select_tickets.php" method="post">
+                    <input type="hidden" name="ticket_type" value="<?= htmlspecialchars($ticket_type) ?>">
+                    <input type="search" placeholder="Search..." name="search_title">
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></i></button>
+                </form>
+               
+            </div> -->
         </div>
         <br>
         <div class="ticket-list">
             <?php if(!empty($_SESSION['st_results'])) :?>  
                 <?php foreach($_SESSION['st_results'] as $st_result) : ?>   
-                    <a href="view_ticket_page.php?id=<?= $st_result['ticket_id']?>" class="ticket">
+                    <a href="view_ticket_page.php?id=<?= htmlspecialchars($st_result['ticket_id'])?>" class="ticket">
                         <span class="con">    
                             <span class="title"><?=htmlspecialchars($st_result['title'])?></span>
                             <span class="msg"><?=htmlspecialchars($st_result['msg'])?></span>
@@ -56,7 +67,7 @@ if (!isset($_SESSION['st_results'])) {
                 <?php endforeach; ?>
                 <?php unset($_SESSION['st_results']); ?>
             <?php else: ?>
-                
+                <h3>No Tickets Found</h3>
             <?php endif; ?>
         </div>
    </div>      
