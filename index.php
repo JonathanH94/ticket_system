@@ -1,7 +1,13 @@
 <?php
 require('header.php');
 require('session_message.php');
-require('select_tickets.php');
+
+
+if (!isset($_SESSION['st_results'])) {
+   
+    header('Location: select_tickets.php');
+    exit();
+}
 
 ?>
 
@@ -25,27 +31,34 @@ require('select_tickets.php');
             <label for="error"><?= htmlspecialchars($error_msg) ?></label>
 
         <?php endif;?>
-        <table class="table">
-            <tr>
-                <th>Ticket ID</th>       
-                <th>Title</th>  
-                <th>Message</th>    
-                <th>Created Datetime</th>
-                <th>status</th>
+        <div class="ticket_select">
+            <form action="select_tickets.php" method="post" id="ticket_form">
+                <select name="ticket_type" id="ticket_type"  onchange="document.getElementById('ticket_form').submit();">
+                    <option value=""></option>
+                    <option value="open">Open Tickets</option>
+                    <option value="resolved">Resolved Tickets</option>
+                    <option value="closed">Closed Tickets</option>
+                </select> 
 
-            </tr>
-    
-            <?php foreach($st_results as $st_result) : ?>
-        
-            <tr>
-                <td> <a href="view_ticket_page.php?id=<?= $st_result['ticket_id']?>"><?= htmlspecialchars($st_result['ticket_id'])?></a></td>
-                <td><?= htmlspecialchars($st_result['title']) ?></td>     
-                <td><?= htmlspecialchars($st_result['msg']) ?></td> 
-                <td><?= htmlspecialchars($st_result['created']) ?></td> 
-                <td><?= htmlspecialchars($st_result['status']) ?></td> 
-            </tr>   
-            <?php endforeach; ?>
-        </table>
+            </form>
+        </div>
+        <br>
+        <div class="ticket-list">
+            <?php if(!empty($_SESSION['st_results'])) :?>  
+                <?php foreach($_SESSION['st_results'] as $st_result) : ?>   
+                    <a href="view_ticket_page.php?id=<?= $st_result['ticket_id']?>" class="ticket">
+                        <span class="con">    
+                            <span class="title"><?=htmlspecialchars($st_result['title'])?></span>
+                            <span class="msg"><?=htmlspecialchars($st_result['msg'])?></span>
+                        </span>    
+                        <span class="ticket_created_home"><?=date( 'F dS Y, G:i',strtotime($st_result['created']))?></span>
+                    </a>
+                <?php endforeach; ?>
+                <?php unset($_SESSION['st_results']); ?>
+            <?php else: ?>
+                
+            <?php endif; ?>
+        </div>
    </div>      
 </div>
 
@@ -53,3 +66,8 @@ require('select_tickets.php');
 require('footer.php');
 
 ?>
+
+
+
+
+

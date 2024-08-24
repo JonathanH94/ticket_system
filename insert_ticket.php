@@ -32,7 +32,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         try{
             $insert = $conn->prepare("INSERT INTO tickets (user_id, title, msg, email) VALUES (:user_id, :title, :msg, :email)");
             $insert->bindParam(':user_id', $_SESSION['user_id']);
-            $insert->bindParam(':title', $title);
+            $insert->bindParam(':title', ucwords($title));
             $insert->bindParam(':msg', $msg);
             $insert->bindParam(':email', $email);
             $insert->execute();

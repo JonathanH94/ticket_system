@@ -24,6 +24,15 @@ if(empty($_GET['id'])) {
 
 }
 
+if (isset($_GET['status']) && in_array($_GET['status'], ['open', 'closed', 'resolved'])) {
+    $update_status = $conn->prepare('UPDATE tickets SET status = :status WHERE ticket_id = :ticket_id');
+    $update_status->bindParam(":status", $_GET['status']);
+    $update_status->bindParam(":ticket_id", $ticket_id, PDO::PARAM_INT);
+    $update_status->execute();
+    header('Location: view_ticket_page.php?id=' . $ticket_id);
+    exit;
+}
+
 
 $select_ticket_comment = $conn->prepare("SELECT * FROM ticket_comments WHERE ticket_id = :ticket_id ORDER BY created DESC");
 $select_ticket_comment->bindParam(':ticket_id', $ticket_id, PDO::PARAM_INT);

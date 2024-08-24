@@ -23,9 +23,15 @@ require('get_ticket_details.php');
             <div>
                 <i class="fa-solid fa-ticket fa-3x"></i>
             </div>
-            <p><?=date( 'F dS, G:i',strtotime($vt_result['created']))?></p>
+            <p class="ticket_created"><?=date( 'F dS Y, G:i',strtotime($vt_result['created']))?></p>
             <p><?=htmlspecialchars($vt_result['msg'])?></p>
         </div>
+        <div>
+            <a class="close-btn" href="get_ticket_details.php?id=<?= $_GET['id']?>&status=closed" onclick="return confirm('Are you sure you want to close this ticket?')" >Close</a>
+            <a class="resolve-btn" href="get_ticket_details.php?id=<?= $_GET['id']?>&status=resolved" onclick="return confirm('Are you sure you want to resolve this ticket?')">Resolve</a>
+        </div>
+
+
         <hr>
     <?php endif; ?>
     <div class="new-comment"> 
@@ -44,7 +50,7 @@ require('get_ticket_details.php');
 
         <?php foreach($comments as $comment) :?>
 
-            <p><?=date( 'F dS, G:i',strtotime($comment['created']))?></p>
+            <p class="ticket_created"><?=date( 'F dS Y, G:i',strtotime($comment['created']))?></p>
             <p><?=htmlspecialchars($comment['msg'])?></p>
 
 
@@ -58,7 +64,7 @@ require('get_ticket_details.php');
             <textarea name="msg" placeholder="Please enter your comment here..." id="msg"></textarea><br>
             <input type="submit" value="Post Comment">
         </form>
-
+        <br>
     </div>
 
 </div>
