@@ -1,9 +1,9 @@
 <?php
 
-require('header.php');
-require('config.php');
+require('../views/partials/header.php');
+require('../logic/config.php');
 // require('session_message.php');
-require('get_ticket_details.php');
+require '../logic/get_ticket_details.php'
 
 
 
@@ -27,8 +27,8 @@ require('get_ticket_details.php');
             <p><?=htmlspecialchars($vt_result['msg'])?></p>
         </div>
         <div>
-            <a class="close-btn" href="get_ticket_details.php?id=<?= $_GET['id']?>&status=closed" onclick="return confirm('Are you sure you want to close this ticket?')" >Close</a>
-            <a class="resolve-btn" href="get_ticket_details.php?id=<?= $_GET['id']?>&status=resolved" onclick="return confirm('Are you sure you want to resolve this ticket?')">Resolve</a>
+            <a class="close-btn" href="/get_ticket_details?id=<?= $_GET['id']?>&status=closed" onclick="return confirm('Are you sure you want to close this ticket?')" >Close</a>
+            <a class="resolve-btn" href="/get_ticket_details?id=<?= $_GET['id']?>&status=resolved" onclick="return confirm('Are you sure you want to resolve this ticket?')">Resolve</a>
         </div>
 
 
@@ -59,7 +59,7 @@ require('get_ticket_details.php');
     </div>
 
     <div class="post-comment">
-        <form action="insert_comment.php" method="post">
+        <form action="/insert_comment" method="post">
             <input type="hidden" name="ticket_id" value="<?= htmlspecialchars($ticket_id) ?>">
             <textarea name="msg" placeholder="Please enter your comment here..." id="msg"></textarea><br>
             <input type="submit" value="Post Comment">
@@ -72,6 +72,6 @@ require('get_ticket_details.php');
 
 
 <?php
-require('footer.php');
+require('../views/partials/footer.php');
 
 ?>

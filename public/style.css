@@ -487,6 +487,29 @@ table, th, td {
 
 }
 
+.ticket-list i {
+    text-align: center;
+
+}
+
+.ticket-list .icon-container {
+    margin-right: 15px; 
+    display: flex;
+    align-items: center; 
+}
+
+.ticket-list .icon-container i {
+    font-size: 40px; 
+    color: #2b2a2a; 
+    
+}
+
+.ticket-list .details-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allow the details to take up remaining space */
+}
+
 
 
 

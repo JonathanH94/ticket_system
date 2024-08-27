@@ -1,17 +1,16 @@
 <?php
 // require('header.php');
-require('config.php');
-require('session_message.php');
+// require('config.php');
+require('../logic/config.php');
+// require('../logic/session_message.php');
 
 
 
-if(empty($_GET['id'])) {
+if(isset($_GET['id']) && !empty($_GET['id'])) {
 
-    $_SESSION['error_msg'] = "No ID found";
-    header('Location: index.php');
-    exit();
+   
 
-} else {
+
     
     $ticket_id = intval($_GET['id']);
 
@@ -22,6 +21,12 @@ if(empty($_GET['id'])) {
 
     
 
+} else {
+    $_SESSION['error_msg'] = "No ID found";
+    header('Location: /my_tickets');
+    exit();
+
+
 }
 
 if (isset($_GET['status']) && in_array($_GET['status'], ['open', 'closed', 'resolved'])) {
@@ -29,7 +34,7 @@ if (isset($_GET['status']) && in_array($_GET['status'], ['open', 'closed', 'reso
     $update_status->bindParam(":status", $_GET['status']);
     $update_status->bindParam(":ticket_id", $ticket_id, PDO::PARAM_INT);
     $update_status->execute();
-    header('Location: view_ticket_page.php?id=' . $ticket_id);
+    header('Location: /ticket_page?id=' . $ticket_id);
     exit;
 }
 

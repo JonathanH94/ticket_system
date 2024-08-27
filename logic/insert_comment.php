@@ -11,7 +11,7 @@ if($_SERVER['REQUEST_METHOD'] =="POST") {
     if(empty($new_comment_msg)) {
 
         $_SESSION['error_msg'] = "Cannot submit a blank comment";
-        header('Location: view_ticket_page.php?id=' .$ticket_id);
+        header('Location: /ticket_page?id=' .$ticket_id);
         exit();
 
     } else   {
@@ -22,13 +22,13 @@ if($_SERVER['REQUEST_METHOD'] =="POST") {
             $insert_comment->bindParam(":msg", $new_comment_msg);
             $insert_comment->execute();
 
-            header('Location: view_ticket_page.php?id=' .$ticket_id);
+            header('Location: /ticket_page?id=' .$ticket_id);
             exit();
 
         } catch (PDOException $e) {
 
             die("Comment failed to insert: " . $e->getMessage());
-            header('Location: view_ticket_page.php');
+            header('Location: /ticket_page');
         }
 
     }

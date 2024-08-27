@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     if(empty($log_email) || empty($log_pass)) {
 
         $_SESSION['error_msg'] = "Email and password is required";
-        header('Location: login.php');
+        header('Location: /login');
         exit();
 
     } else {
@@ -28,14 +28,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
             if($user && password_verify($log_pass, $user['password'])) {
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['login'] = $log_email;
-                header('Location: index.php');
+                header('Location: /my_tickets');
                 exit();
 
 
             } else {
 
                 $_SESSION['error_msg'] = "Incorrect email or password.";
-                header('Location: login.php');
+                header('Location: /login');
                 exit();
 
             }
@@ -44,7 +44,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
  
         }catch (PDOException $e) {
             die("Failed to login: " . $e->getMessage());
-            header('Location: login.php');
+            header('Location: /login');
             exit();
 
         }

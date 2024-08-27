@@ -1,7 +1,8 @@
 <?php
 
-require('config.php');
-require('session_message.php');
+// require('config.php');
+require('../logic/config.php');
+require('../logic/session_message.php');
 
 $ticket_type = 'open';
 
@@ -19,8 +20,8 @@ $select_tickets->execute();
 $st_results = $select_tickets->fetchAll(PDO::FETCH_ASSOC);
 
 $_SESSION['st_results'] = $st_results;
-
-header('Location: index.php');
+ 
+header('Location: /my_tickets');
 exit();
 
 

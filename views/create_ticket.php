@@ -1,7 +1,7 @@
 <?php
 
-require('header.php');
-require('session_message.php');
+require('../views/partials/header.php');
+// require '../logic/session_message.php';
 
 ?>
 
@@ -15,7 +15,7 @@ require('session_message.php');
             <label for="error"><?= htmlspecialchars($error_msg) ?></label>
 
         <?php endif;?>
-        <form action="insert_ticket.php" method="post">
+        <form action="/insert_ticket" method="post">
             <label for="title">Title</label>
             <input type="text" name="title" placeholder="Title" id="title" >
             <label for="email">Email</label>
@@ -30,6 +30,6 @@ require('session_message.php');
 </div>
 
 <?php
-require('footer.php');
+require('../views/partials/footer.php');
 
 ?>

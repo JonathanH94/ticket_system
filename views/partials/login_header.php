@@ -15,8 +15,8 @@
         <div>
             <h1>Ticketing System</h1>
             <ul>
-                <li><a href="login.php">Login</a></li>
-                <li><a href="register.php">Register</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
 
             </ul>
         </div>

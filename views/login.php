@@ -1,7 +1,7 @@
 <?php
 
-require('login_header.php');
-require('session_message.php');
+require('../views/partials/login_header.php');
+// require('session_message.php');
 
 ?>
 
@@ -12,7 +12,7 @@ require('session_message.php');
         echo '<label for="error">'. $error_msg . '</label>';
 
     } ?>
-    <form action="auth_login.php" method="post">
+    <form action="/auth_login" method="post">
         <label for="email">Email</label>
         <input type="email" name="email" id="email">
         <label for="password">Password</label>

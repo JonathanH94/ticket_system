@@ -11,24 +11,24 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
     if(empty($reg_email) || !filter_var($reg_email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['error_msg'] = "A valid email address is required";
-        header('Location: register.php');
+        header('Location: /register');
         exit();
 
     }elseif(empty($reg_pass)) {
         $_SESSION['error_msg'] = "Please enter a password";
-        header('Location: register.php');
+        header('Location: /register');
         exit();
 
 
     }elseif(empty($reg_pass) || strlen($reg_pass) < 6) {
         $_SESSION['error_msg'] = "Password must be at least 6 characters";
-        header('Location: register.php');
+        header('Location: /register');
         exit();
 
 
     }elseif($reg_pass != $reg_confirm_pass) {
         $_SESSION['error_msg'] = "Passwords do not match";
-        header('Location: register.php');
+        header('Location: /register');
         exit();
 
     } else {
@@ -41,7 +41,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         if($count > 0) {
 
             $_SESSION['error_msg'] = "Email address is taken.";
-            header('Location: register.php');
+            header('Location: /register');
             exit();
 
         } else {
@@ -54,12 +54,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 $insert_reg->bindParam(":password", $password_hash);
                 $insert_reg->execute();
 
-                echo "Thank you for registering with the platform";
+                // echo "Thank you for registering with the platform";
+                header('Location: /login');
 
 
             } catch (PDOException $e) {
                 die("Registered details failed to insert into DB: " . $e->getMessage());
-                header('Location: register.php');
+                header('Location: /register');
 
 
             }

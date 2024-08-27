@@ -14,10 +14,10 @@
     
     <nav class="navbar">
         <div>
-            <h1><a href="index.php" class="no-underline">Ticketing System</a></h1>
+            <h1><a href="/my_tickets" class="no-underline">Ticketing System</a></h1>
             <ul>
-                <li><a href="index.php">My Tickets</a></li>
-                <li><a href="create_ticket.php">Create a ticket</a></li>
+                <li><a href="/my_tickets">My Tickets</a></li>
+                <li><a href="/create_ticket">Create a ticket</a></li>
 
             </ul>
         
