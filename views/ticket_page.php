@@ -1,8 +1,7 @@
 <?php
-
+// require '../logic/session_config.php';
 require('../views/partials/header.php');
 require('../logic/config.php');
-// require('session_message.php');
 require '../logic/get_ticket_details.php'
 
 

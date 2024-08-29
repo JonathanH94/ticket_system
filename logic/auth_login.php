@@ -1,7 +1,8 @@
 <?php
-
+// require '../logic/session_config.php';
 require('config.php');
-require('session_message.php');
+
+
 
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -11,7 +12,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
     if(empty($log_email) || empty($log_pass)) {
-
         $_SESSION['error_msg'] = "Email and password is required";
         header('Location: /login');
         exit();
@@ -62,3 +62,4 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 }
+

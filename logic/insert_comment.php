@@ -1,7 +1,7 @@
 <?php
-
+// require '../logic/session_config.php';
 require('config.php');
-require('session_message.php');
+
 
 if($_SERVER['REQUEST_METHOD'] =="POST") {
 

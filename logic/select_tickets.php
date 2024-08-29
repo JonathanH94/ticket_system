@@ -2,7 +2,7 @@
 
 // require('config.php');
 require('../logic/config.php');
-require('../logic/session_message.php');
+require '../logic/session_config.php';
 
 $ticket_type = 'open';
 
